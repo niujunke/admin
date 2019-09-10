@@ -1,7 +1,7 @@
 import axios from '@/libs/api.request'
 
 export const login = (data) => {
-  return axios.post('/session/login', data)
+  return axios.post('/login', data)
 }
 
 export const getUserInfo = (token) => {

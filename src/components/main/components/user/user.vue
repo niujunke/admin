@@ -40,6 +40,12 @@ export default {
       'handleLogOut'
     ]),
     logout () {
+      localStorage.clear()
+      this.$store.commit('setToken','')
+       this.$router.push({
+          name: 'login'
+        })
+        return
       this.handleLogOut().then(() => {
         this.$router.push({
           name: 'login'

@@ -29,7 +29,7 @@ export default {
     return axios.get('/department/listAll')
   },
   listEmployeeByDepartmentName: (departmentName) => {
-    return axios.get('/department/listEmployeeByDepartmentName?departmentName=' + departmentName)
+    return axios.get('/department/listEmployeeByDepartmentName/' + departmentName)
   },
   // 上下移动
   upOrDown: (departmentId, swapId) => {

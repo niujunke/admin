@@ -2,7 +2,7 @@ import axios from '@/libs/api.request'
 export default{
   // 员工管理查询
   query: (data) => {
-    return axios.post('/admin/employee/query', data)
+    return axios.post('/role/listEmployee', data)
   },
   // 添加员工
   addEmployee: (data) => {

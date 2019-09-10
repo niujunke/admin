@@ -24,6 +24,12 @@ http.interceptors.request.use(config => {
 http.interceptors.response.use(res => {
   let { data } = res
   if (!data.success) {
+    if (data.code === 1000) {
+      Cookies.remove('token')
+      localStorage.clear()
+      console.log(window.location.pathname)
+      location.href = '#/login'
+    }
     Message.error(data.msg)
   }
   return data

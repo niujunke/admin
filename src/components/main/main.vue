@@ -24,7 +24,7 @@
             <tags-nav :value="$route" @input="handleClick" :list="tagNavList" @on-close="handleCloseTag"/>
           </div>
           <Content class="content-wrapper">
-            <keep-alive :include="cacheList">
+            <keep-alive :include="keepAliveList">
               <router-view/>
             </keep-alive>
             <ABackTop :height="100" :bottom="80" :right="50" container=".content-wrapper"></ABackTop>
@@ -87,6 +87,9 @@ export default {
       const list = ['ParentView', ...this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []]
       return list
     },
+    keepAliveList(){
+      return this.$store.state.app.keepAliveList
+    },
     menuList () {
       return getPrivilegeMenu(this.userInfo.privilegeList,this.$store.getters.menuList,this.userInfo.isSuperMan)
     },
@@ -107,7 +110,8 @@ export default {
       'addTag',
       'setLocal',
       'setHomeRoute',
-      'closeTag'
+      'closeTag',
+      'pushKeepAliveList'
     ]),
     ...mapActions([
       'handleLogin',
@@ -160,6 +164,9 @@ export default {
       this.setBreadCrumb(newRoute)
       this.setTagNavList(getNewTagList(this.tagNavList, newRoute))
       this.$refs.sideMenu.updateOpenName(newRoute.name)
+      this.$nextTick(()=>{
+        this.pushKeepAliveList(newRoute.name)
+      })
     }
   },
   mounted () {

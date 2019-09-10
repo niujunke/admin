@@ -32,13 +32,26 @@ export default {
     homeRoute: {},
     local: localRead('local'),
     errorList: [],
-    hasReadErrorPage: false
+    hasReadErrorPage: false,
+    keepAliveList: []
   },
   getters: {
     menuList: (state, getters, rootState) => getMenuByRouter(routers, rootState.user.access),
     errorCount: state => state.errorList.length
   },
   mutations: {
+    pushKeepAliveList (state, name) {
+      let index = state.keepAliveList.indexOf(name)
+      if (index < 0) {
+        state.keepAliveList.push(name)
+      }
+    },
+    removeKeepAlive (state, name) {
+      let index = state.keepAliveList.findIndex(item => item === name)
+      if (index !== -1) {
+        state.keepAliveList.splice(index, 1)
+      }
+    },
     setBreadCrumb (state, route) {
       state.breadCrumbList = getBreadCrumbList(route, state.homeRoute)
     },

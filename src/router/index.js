@@ -9,8 +9,8 @@ const { homeName } = config
 
 Vue.use(Router)
 const router = new Router({
-  routes,
-  mode: 'history'
+  routes
+  // mode: 'history'
 })
 const LOGIN_PAGE_NAME = 'login'
 
@@ -18,14 +18,14 @@ const LOGIN_PAGE_NAME = 'login'
 //   if (canTurnTo(to.name, access, routes)) next() // 有权限，可访问
 //   else next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
 // }
+// 防止刷新丢失登录信息
 if (!store.state.user.userLoginInfo.privilegeList && localRead('userInfo')) {
   store.state.user.userLoginInfo = JSON.parse(localRead('userInfo'))
 }
-console.log(store.state.user.userLoginInfo.privilegeList)
+
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
   const token = getToken()
-  console.log('login/' + token)
   if (!token && to.name !== LOGIN_PAGE_NAME) {
     // 未登录且要跳转的页面不是登录页
     next({
@@ -45,6 +45,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
+  store.commit('removeKeepAlive', to.name)
   setTitle(to, router.app)
   iView.LoadingBar.finish()
   window.scrollTo(0, 0)
