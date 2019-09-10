@@ -30,74 +30,74 @@
 </template>
 
 <script>
-import Tables from "@/components/tables";
+import Tables from '@/components/tables'
 export default {
   components: {
     Tables
   },
-  //接收参数
+  // 接收参数
   props: {},
-  data() {
-    //这里存放数据
+  data () {
+    // 这里存放数据
     return {
-      modalShow:false,
+      modalShow: false,
       tableData: {},
       queryParams: {
-        endDate: "",
-        name: "",
+        endDate: '',
+        name: '',
         pageNum: 1,
         pageSize: 10,
-        phone: "",
-        startDate: ""
+        phone: '',
+        startDate: ''
       },
       columns: [
         {
-          title: "会员id",
-          key: "memberId "
+          title: '会员id',
+          key: 'memberId '
         },
         {
-          title: "名字",
-          key: "name"
+          title: '名字',
+          key: 'name'
         },
         {
-          title: "手机",
-          key: "phone "
+          title: '手机',
+          key: 'phone '
         },
         {
-          title: "会员价格",
-          key: "memberPrice "
+          title: '会员价格',
+          key: 'memberPrice '
         },
         {
-          title: "总次数",
-          key: "totalNum"
+          title: '总次数',
+          key: 'totalNum'
         },
         {
-          title: "剩余次数",
-          key: "unusedNum "
+          title: '剩余次数',
+          key: 'unusedNum '
         },
         {
-          title: "创建时间",
-          key: "createTime"
+          title: '创建时间',
+          key: 'createTime'
         }
       ]
-    };
+    }
   },
   computed: {},
   watch: {},
   // 过滤器
   filters: {},
-  created() {},
-  mounted() {},
-  beforeCreate() {},
-  beforeMount() {},
-  beforeUpdate() {},
-  updated() {},
-  beforeDestroy() {},
-  destroyed() {},
-  activated() {},
-  //方法集合
+  created () {},
+  mounted () {},
+  beforeCreate () {},
+  beforeMount () {},
+  beforeUpdate () {},
+  updated () {},
+  beforeDestroy () {},
+  destroyed () {},
+  activated () {},
+  // 方法集合
   methods: {}
-};
+}
 </script>
 <style lang='less' scoped>
 .btns {

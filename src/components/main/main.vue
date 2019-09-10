@@ -44,7 +44,7 @@ import Fullscreen from './components/fullscreen'
 import Language from './components/language'
 import ErrorStore from './components/error-store'
 import { mapMutations, mapActions, mapGetters } from 'vuex'
-import { getNewTagList, routeEqual,getPrivilegeMenu } from '@/libs/util'
+import { getNewTagList, routeEqual, getPrivilegeMenu } from '@/libs/util'
 import routers from '@/router/routers'
 import minLogo from '@/assets/images/logo-min.jpg'
 import maxLogo from '@/assets/images/logo.jpg'
@@ -87,11 +87,11 @@ export default {
       const list = ['ParentView', ...this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []]
       return list
     },
-    keepAliveList(){
+    keepAliveList () {
       return this.$store.state.app.keepAliveList
     },
     menuList () {
-      return getPrivilegeMenu(this.userInfo.privilegeList,this.$store.getters.menuList,this.userInfo.isSuperMan)
+      return getPrivilegeMenu(this.userInfo.privilegeList, this.$store.getters.menuList, this.userInfo.isSuperMan)
     },
     local () {
       return this.$store.state.app.local
@@ -164,7 +164,7 @@ export default {
       this.setBreadCrumb(newRoute)
       this.setTagNavList(getNewTagList(this.tagNavList, newRoute))
       this.$refs.sideMenu.updateOpenName(newRoute.name)
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.pushKeepAliveList(newRoute.name)
       })
     }
@@ -189,7 +189,7 @@ export default {
       })
     }
     // 获取未读消息条数
-   // this.getUnreadMessageCount()
+    // this.getUnreadMessageCount()
   }
 }
 </script>

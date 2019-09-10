@@ -40,9 +40,9 @@ export default {
         ]
       }
     },
-    loading:{
-      type:Boolean,
-      default:false
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -65,7 +65,7 @@ export default {
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.$emit('on-success-valid',this.form)
+          this.$emit('on-success-valid', this.form)
         }
       })
     }

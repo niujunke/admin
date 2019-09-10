@@ -26,9 +26,9 @@ export default {
       type: String,
       default: ''
     },
-    userName:{
-      type:String,
-      default:''
+    userName: {
+      type: String,
+      default: ''
     },
     messageUnreadCount: {
       type: Number,
@@ -41,11 +41,11 @@ export default {
     ]),
     logout () {
       localStorage.clear()
-      this.$store.commit('setToken','')
-       this.$router.push({
-          name: 'login'
-        })
-        return
+      this.$store.commit('setToken', '')
+      this.$router.push({
+        name: 'login'
+      })
+      return
       this.handleLogOut().then(() => {
         this.$router.push({
           name: 'login'
